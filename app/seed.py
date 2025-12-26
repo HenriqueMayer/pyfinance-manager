@@ -15,7 +15,6 @@ def create_initial_data():
         existing_category_names = set(session.exec(select(Category.name)).all())
         existing_account_names = set(session.exec(select(Account.name)).all())
 
-        # --- 1. CATEGORIES ---
         categories = [
             Category(name="Salary", description="Monthly income"),
             Category(name="Home Office", description="Work-from-home stipend"),
@@ -35,7 +34,6 @@ def create_initial_data():
         if categories_to_create:
             session.add_all(categories_to_create)
 
-        # --- 2. ACCOUNTS ---
         accounts = [
             Account(name="Mercado Pago", account_type=AccountType.CHECKING),
             Account(name="Inter Bank", account_type=AccountType.CHECKING),
@@ -52,12 +50,12 @@ def create_initial_data():
         if accounts_to_create:
             session.add_all(accounts_to_create)
 
-        # --- 3. COMMIT ---
+        # Commit
         session.commit()
 
         print("✅ Seed completed successfully.")
-        print(f"   - Categories created: {len(categories_to_create)}")
-        print(f"   - Accounts created: {len(accounts_to_create)}")
+        print(f"- Categories created: {len(categories_to_create)}")
+        print(f"- Accounts created: {len(accounts_to_create)}")
 
 
 if __name__ == "__main__":
