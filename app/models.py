@@ -4,6 +4,8 @@ from enum import Enum
 from typing import List, Optional
 
 from sqlmodel import SQLModel, Field, Relationship
+from sqlalchemy import Column
+from sqlalchemy.types import Numeric
 from pydantic import field_validator
 
 
@@ -47,7 +49,8 @@ class Transaction(SQLModel, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
     date: date
     description: str
-    amount: Decimal = Field(max_digits=10, decimal_places=2)
+    # Store monetary values with fixed precision (10,2)
+    amount: Decimal = Field(sa_column=Column(Numeric(10, 2)))
     type: TransactionType
 
     account_id: Optional[int] = Field(default=None, foreign_key="account.id")

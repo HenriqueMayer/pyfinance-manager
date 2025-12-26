@@ -1,6 +1,7 @@
 # Data Modeling Documentation
 
-This document explains the database structure and design decisions made in `models.py`. This markdown file was use to learn and document the data modeling concepts used in this project.
+- This document explains the database structure and design decisions made in `models.py`. 
+- **This markdown file was use to learn and document the data modeling concepts used in this project.**
 
 ## Technologies
 
